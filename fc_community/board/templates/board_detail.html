@@ -15,6 +15,10 @@
       <textarea class="form-control" name="contents" readonly>
 {{ board.contents }}</textarea
       >
+      <label for="tags">태그</label>
+      <span id="tags" class="form-control">
+        {% for tag in board.tags.all %} {{ tag.name }}, {% endfor %}
+      </span>
     </div>
     <button class="btn btn-primary" onclick="location.href='/board/list/'">
       돌아가기
