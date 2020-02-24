@@ -14,5 +14,5 @@ class Fcuser(models.Model):
 
     class Meta:
         db_table = 'fastcampus_fcuser'
-        verbose_name = "패스트 캠퍼스 사용자"
-        verbose_name_plural = '패스트 캠퍼스 사용자'
+        verbose_name = "SWATSCHOOL 사용자"
+        verbose_name_plural = 'SWATSCHOOL 사용자'
