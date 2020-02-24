@@ -6,6 +6,15 @@ from django.contrib.auth.hashers import make_password, check_password
 # Create your views here.
 
 
+def home(request):
+    user_id = request.session.get('user')
+
+    if user_id:
+        fcuser = Fcuser.objects.get(pk=user_id)
+        return HttpResponse(fcuser.username)
+    return HttpResponse('HOME!')
+
+
 def login(request):
     if request.method == 'GET':
         return render(request, 'login.html')
@@ -21,6 +30,8 @@ def login(request):
             if check_password(password, fcuser.password):
                 # login process
                 # Session
+                # session에 fcuser.id(pk)를 저장
+                request.session['user'] = fcuser.id
                 # Redirect
                 return redirect('/')
 
