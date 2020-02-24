@@ -14,10 +14,11 @@ def register(request):
         username = request.POST.get('username', None)
         password = request.POST.get('password', None)
         re_password = request.POST.get('re-password', None)
+        useremail = request.POST.get('useremail', None)
 
         res_data = {}
 
-        if not (username and password and re_password):
+        if not (username and password and re_password and useremail):
             res_data['error'] = '모든 값을 입력해야합니다.'
 
         elif password != re_password:
@@ -26,6 +27,7 @@ def register(request):
             fcuser = Fcuser(
                 username=username,
                 password=make_password(password),
+                useremail=useremail,
             )
 
             fcuser.save()
